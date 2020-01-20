@@ -1,8 +1,7 @@
 from django.urls import path
-
-
-name = base
+from . import views
+name = 'base'
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('', views.top, name='top'),
 ]
