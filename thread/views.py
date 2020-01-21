@@ -27,5 +27,4 @@ def topic_create(request):
         else:
             ctx["form"] = topic_form
             return render(request, template_name, ctx)
-
-
+        
