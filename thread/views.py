@@ -17,6 +17,17 @@ class TopicCreateView(CreateView):
     model = Topic
     success_url = reverse_lazy('base:top')
 
+    def form_valid(self, form):
+        ctx = {'form': form}
+        if self.request.POST.get('next', '') == 'confirm':
+            return render(self.request, 'thread/confirm_topic.html', ctx)
+        if self.request.POST.get('next', '') == 'back':
+            return render(self.request, 'thread/create_topic.html', ctx)
+        if self.request.POST.get('next', '') == 'create':
+            return super().form_valid(form)
+        else:
+            # 正常動作ではここは通らない。エラーページへの遷移でも良い
+            return redirect(reverse_lazy('base:top'))
 
 '''
 def topic_create(request):
