@@ -18,7 +18,7 @@ class TopicCreateForm(ModelForm):
             }
 
     def __init__(self, *args, **kwargs):
-        # kwargs.setdefault('label_suffix', '')
+        kwargs.setdefault('label_suffix', '')
         super().__init__(*args, **kwargs)
         self.fields['category'].empty_label = '選択して下さい'
         self.fields['user_name'].widget.attrs['value'] = '匿名'
